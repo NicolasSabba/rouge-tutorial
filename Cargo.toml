@@ -1,0 +1,16 @@
+[package]
+name = "rouge-tutorial"
+version = "0.1.0"
+authors = ["Nicolas <nicolas.sabbatini.95gmail.com>"]
+edition = "2018"
+description = "A rogue-like game made following the RLTK (Rust) tutorial."
+homepage = "https://github.com/NicolasSabba/rouge-tutorial"
+repository = "https://github.com/NicolasSabba/rouge-tutorial"
+readme = "README.md"
+keywords = ["terminal", "game", "rogue-like"]
+categories = ["games", "rogue-like"]
+license = "Apache-2.0"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]

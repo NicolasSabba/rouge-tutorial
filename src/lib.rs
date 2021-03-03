@@ -1,3 +1,4 @@
-pub mod render;
 pub mod components;
-pub mod game_state;
+pub mod play_state;
+pub mod map;
+pub mod rect;

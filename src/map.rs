@@ -27,37 +27,12 @@ pub fn vec_idx_to_map_2d(index: usize) -> (i32, i32) {
 pub struct Map(pub Vec<TileType>);
 
 impl Map {
-  pub fn new_test() -> Self {
-    let mut map = Map(vec![TileType::Floor; 80 * 50]);
-
-    // Make the boundaries walls
-    for x in 0..80 {
-      map.0[map_2d_to_vec_idx(x, 0)] = TileType::Wall;
-      map.0[map_2d_to_vec_idx(x, 49)] = TileType::Wall;
-    }
-    for y in 0..50 {
-      map.0[map_2d_to_vec_idx(0, y)] = TileType::Wall;
-      map.0[map_2d_to_vec_idx(79, y)] = TileType::Wall;
-    }
-
-    // Now we'll randomly splat a bunch of walls. It won't be pretty, but it's a decent illustration.
-    // First, obtain the thread-local RNG:
-    let mut rng = rltk::RandomNumberGenerator::new();
-
-    for _i in 0..400 {
-      let x = rng.roll_dice(1, 79);
-      let y = rng.roll_dice(1, 49);
-      let idx = map_2d_to_vec_idx(x, y);
-      if idx != map_2d_to_vec_idx(40, 25) {
-        map.0[idx] = TileType::Wall;
-      }
-    }
-
-    map
+  pub fn new() -> Self {
+    Map(vec![TileType::Floor; 80 * 50])
   }
 
-  pub fn new() -> Self {
-    // Create empty map full of wals
+  pub fn generate() -> (Self, Vec<Rect>) {
+    // Create empty map full of walls
     let mut map = Map(vec![TileType::Wall; 80 * 50]);
 
     // Create a room vector
@@ -105,7 +80,7 @@ impl Map {
       }
     }
 
-    map
+    (map, rooms)
   }
 }
 
